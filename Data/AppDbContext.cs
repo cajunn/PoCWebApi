@@ -139,6 +139,12 @@ namespace PoCWebApi.Data
                 new RoleService { RoleId = 2, ServiceId = 1 },
                 new RoleService { RoleId = 2, ServiceId = 2 }
             );
+
+            // Users
+            b.Entity<User>().HasData(
+                new User { Oid = new Guid("a3495fa6-da05-459c-a0cf-72103747fc78"), DisplayName = "MarcoAdmin", Email = "MarcoAdmin@test.com" },
+                new User { Oid = new Guid("6047da8a-10f3-4de0-b3e2-56d9ccb08573"), DisplayName = "MarcoCSR", Email = "MarcoCSR@test.com" }
+            );
         }
     }
 }

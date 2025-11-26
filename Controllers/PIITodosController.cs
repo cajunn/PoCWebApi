@@ -23,6 +23,7 @@ namespace PoCWebApi.Controllers
 
         // GET api/piitodos
         [HttpGet]
+        [Authorize(Policy = "perm:PII.Read")]
         public async Task<IActionResult> GetMyPIITodos()
         {
             var oid = GetOid();
@@ -33,6 +34,7 @@ namespace PoCWebApi.Controllers
 
         // POST api/piitodos
         [HttpPost]
+        [Authorize(Policy = "perm:PII.Write")]
         public async Task<IActionResult> Create([FromBody] CreatePIITodo dto)
         {
             var oid = GetOid();
@@ -46,6 +48,7 @@ namespace PoCWebApi.Controllers
 
         // PATCH api/piitodos/{id}/done
         [HttpPatch("{id:int}/done")]
+        [Authorize(Policy = "perm:PII.Write")]
         public async Task<IActionResult> MarkDone(int id)
         {
             var oid = GetOid();

@@ -14,6 +14,20 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 // Controllers
 builder.Services.AddControllers();
 
+builder.Services.AddMemoryCache();
+
+builder.Services.AddSingleton<
+    Microsoft.AspNetCore.Authorization.IAuthorizationPolicyProvider,
+    PoCWebApi.Auth.Policies.DynamicPermissionPolicyProvider>();
+
+builder.Services.AddScoped<
+    Microsoft.AspNetCore.Authorization.IAuthorizationHandler,
+    PoCWebApi.Auth.Policies.PermissionHandler>();
+
+builder.Services.AddScoped<
+    PoCWebApi.Auth.IAuthorizationServicePdp,
+    PoCWebApi.Auth.AuthorizationServicePdp>();
+
 // JWT Bearer auth (HS256 - same key as UI)
 var issuer = builder.Configuration["Jwt:Issuer"];
 var audience = builder.Configuration["Jwt:Audience"];

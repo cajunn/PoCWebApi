@@ -32,6 +32,7 @@ namespace PoCWebApi.Controllers
 
         // GET api/todos
         [HttpGet]
+        [Authorize(Policy = "perm:Todo.Read")]
         public async Task<IActionResult> GetMyTodos()
         {
             var oid = GetOid();
@@ -42,6 +43,7 @@ namespace PoCWebApi.Controllers
 
         // POST api/todos
         [HttpPost]
+        [Authorize(Policy = "perm:Todo.Write")]
         public async Task<IActionResult> Create([FromBody] CreateTodo dto)
         {
             var oid = GetOid();
@@ -55,6 +57,7 @@ namespace PoCWebApi.Controllers
 
         // PATCH api/todos/{id}/done
         [HttpPatch("{id:int}/done")]
+        [Authorize(Policy = "perm:Todo.Write")]
         public async Task<IActionResult> MarkDone(int id)
         {
             var oid = GetOid();

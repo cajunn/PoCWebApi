@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PoCWebApi.Auth.Models.Role>
+
+@{
+    ViewData["Title"] = "Roles";
+}
+
+<h1>Roles</h1>
+
+<p>
+    <a asp-area="Admin" asp-controller="Roles" asp-action="Create" class="btn btn-primary">
+        Create New Role
+    </a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>RoleId</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Mappings</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model)
+        {
+            <tr>
+                <td>@role.RoleId</td>
+                <td>@role.Name</td>
+                <td>@role.Description</td>
+                <td>
+                    <a asp-area="Admin" asp-controller="RoleServices" asp-action="Edit" asp-route-id="@role.RoleId">
+                        Services
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

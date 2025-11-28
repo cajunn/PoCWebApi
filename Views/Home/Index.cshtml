@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>RBAC Admin Home</h1>
+
+<p>Use the links below to manage roles, permissions and mappings.</p>
+
+<ul>
+    <li>
+        <a asp-area="Admin" asp-controller="Roles" asp-action="Index">
+            Manage Roles
+        </a>
+    </li>
+    <li>
+        <a asp-area="Admin" asp-controller="Permissions" asp-action="Index">
+            View Permissions
+        </a>
+    </li>
+    <li>
+        <a asp-area="Admin" asp-controller="UserRoles" asp-action="Index">
+            Assign Roles to Users
+        </a>
+    </li>
+    <li>
+        <!-- If you’ve wired RoleServices/Edit, you’ll probably reach it from Roles list -->
+        From <strong>Roles</strong> screen, click “Services” to map Services → Roles.
+    </li>
+    <li>
+        <a href="/swagger">
+            Swagger (API docs & JWT testing)
+        </a>
+    </li>
+</ul>

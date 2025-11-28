@@ -1,0 +1,27 @@
+﻿@model IEnumerable<PoCWebApi.Auth.Models.Permission>
+
+@{
+    ViewData["Title"] = "Permissions";
+}
+
+<h1>Permissions</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>PermissionId</th>
+            <th>Key</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.PermissionId</td>
+            <td>@p.Key</td>
+            <td>@p.Description</td>
+        </tr>
+    }
+    </tbody>
+</table>

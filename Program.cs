@@ -14,6 +14,9 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 // Controllers
 builder.Services.AddControllers();
 
+builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews();
+
 builder.Services.AddMemoryCache();
 
 builder.Services.AddSingleton<
@@ -107,6 +110,21 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseStaticFiles();
+
 app.MapControllers();
+
+app.MapRazorPages();
+
+//  Area route (for Admin)
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+// for MVC controllers/views
+app.MapControllerRoute(              
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 app.Run();

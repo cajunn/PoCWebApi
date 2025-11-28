@@ -1,0 +1,39 @@
+﻿@model PoCWebApi.Areas.Admin.ViewModels.RoleServicesViewModel
+
+@{
+    ViewData["Title"] = "Edit Role Services";
+}
+
+<h1>Services for role: @Model.RoleName</h1>
+
+<form asp-area="Admin" asp-controller="RoleServices" asp-action="Edit" method="post">
+    <input type="hidden" asp-for="RoleId" />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Assigned</th>
+                <th>Service Key</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Services.Count; i++)
+            {
+                <tr>
+                    <td>
+                        <input asp-for="Services[@i].IsAssigned" />
+                        <input asp-for="Services[@i].ServiceId" type="hidden" />
+                        <input asp-for="Services[@i].Key" type="hidden" />
+                        <input asp-for="Services[@i].Description" type="hidden" />
+                    </td>
+                    <td>@Model.Services[i].Key</td>
+                    <td>@Model.Services[i].Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-area="Admin" asp-controller="Roles" asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

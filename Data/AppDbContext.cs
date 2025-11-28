@@ -145,6 +145,12 @@ namespace PoCWebApi.Data
                 new User { Oid = new Guid("a3495fa6-da05-459c-a0cf-72103747fc78"), DisplayName = "MarcoAdmin", Email = "MarcoAdmin@test.com" },
                 new User { Oid = new Guid("6047da8a-10f3-4de0-b3e2-56d9ccb08573"), DisplayName = "MarcoCSR", Email = "MarcoCSR@test.com" }
             );
+
+            // UserRoles
+            b.Entity<UserRole>().HasData(
+                new UserRole { Oid = new Guid("a3495fa6-da05-459c-a0cf-72103747fc78"), RoleId = 2},
+                new UserRole { Oid = new Guid("6047da8a-10f3-4de0-b3e2-56d9ccb08573"), RoleId = 1}
+            );
         }
     }
 }
